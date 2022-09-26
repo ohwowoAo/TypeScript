@@ -66,3 +66,60 @@ function 매력(월소득: number ,집보유여부:boolean,  매력점수:string
     }
 }
 매력(700, false, '중')
+
+
+//interface
+interface Study {name: string}
+interface Teach extends Study{name: string, age : number}
+//extends Study = Study내용 복사
+
+//type으로 유사하게 만들기
+// type Study = {name : string}
+// type Teach = {age : number} & Study
+//& 기호 = intersection type / extends 처럼 복사의 개념보다는 두타입을 전부 만족하는 타입이라는 뜻
+
+let 학생: Study = {name: 'kim'}
+let 선생: Teach = {name: 'kim', age: 20}
+
+//Q1.
+interface Product {brand : string, serialNumber:number,  model: string[]}
+let 상품:Product = { brand : 'Samsung', serialNumber : 1360, model : ['TV', 'phone'] }
+
+//Q2
+interface Basket {
+    product : string,
+    price : number
+}
+let 장바구니: Basket[] = [ { product : '청소기', price : 7000 }, { product : '삼다수', price : 800 } ] 
+
+
+//Q3
+interface card extends Basket {card : boolean}
+// { product : '청소기', price : 7000, card : false }
+
+
+//Q4
+// interface Calculator{
+//     x : number,
+//     y : number
+// }
+
+// function plus: Calculator{
+//     return x + y
+// }
+// function minus(x : number, y : number){
+//     return x - y
+// }
+interface Calculator{
+    plus : (x : number, y : number) => number,
+    minus : (x : number, y : number) => number,
+}
+
+let 오브젝트:Calculator = {
+    plus(x,y){
+        return x + y
+    },
+    minus(x,y){
+        return x - y
+    }
+}
